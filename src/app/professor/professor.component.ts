@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Professor } from '../models/professor';
 
 @Component({
   selector: 'app-professor',
@@ -7,7 +8,8 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./professor.component.css']
 })
 export class ProfessorComponent {
-  addressForm = this.fb.group({
+  professor: Professor;
+  form = this.fb.group({
     company: null,
     firstName: [null, Validators.required],
     lastName: [null, Validators.required],
@@ -87,7 +89,14 @@ export class ProfessorComponent {
 
   constructor(private fb: FormBuilder) {}
 
-  onSubmit() {
-    alert('Thanks!');
+
+
+  //onSubmit() {
+  //  alert('Thanks!');
+  //}
+
+  salvar() {
+    this.professor = this.form.value;
+    console.log(this.professor)
   }
 }
